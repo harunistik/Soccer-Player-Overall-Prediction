@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Futbolcu Overall Tahmini</title>
+  <link rel="stylesheet" href="/assets/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <h1>Futbolcu Overall Tahmini</h1>
+        <p class="sub">Aşağıdaki özellikleri girin. Model <code>/predict</code> Değer aralığı: 0–99.</p>
+      </div>
+    </header>
+
+    <form id="form" class="grid" novalidate>
+      <!-- Sol sütun -->
+      <div class="card">
+        <div class="field">
+          <label for="pace">Pace</label>
+          <div class="control">
+            <input id="pace_range" type="range" min="0" max="99" step="1" value="80" aria-label="Pace (range)">
+            <input id="pace" name="pace" type="number" inputmode="decimal" min="0" max="99" step="1" value="80" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="shooting">Shooting</label>
+          <div class="control">
+            <input id="shooting_range" type="range" min="0" max="99" step="1" value="75" aria-label="Shooting (range)">
+            <input id="shooting" name="shooting" type="number" inputmode="decimal" min="0" max="99" step="1" value="75" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="passing">Passing</label>
+          <div class="control">
+            <input id="passing_range" type="range" min="0" max="99" step="1" value="78" aria-label="Passing (range)">
+            <input id="passing" name="passing" type="number" inputmode="decimal" min="0" max="99" step="1" value="78" required>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sağ sütun -->
+      <div class="card">
+        <div class="field">
+          <label for="dribbling">Dribbling</label>
+          <div class="control">
+            <input id="dribbling_range" type="range" min="0" max="99" step="1" value="82" aria-label="Dribbling (range)">
+            <input id="dribbling" name="dribbling" type="number" inputmode="decimal" min="0" max="99" step="1" value="82" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="defending">Defending</label>
+          <div class="control">
+            <input id="defending_range" type="range" min="0" max="99" step="1" value="70" aria-label="Defending (range)">
+            <input id="defending" name="defending" type="number" inputmode="decimal" min="0" max="99" step="1" value="70" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="physic">Physic</label>
+          <div class="control">
+            <input id="physic_range" type="range" min="0" max="99" step="1" value="76" aria-label="Physic (range)">
+            <input id="physic" name="physic" type="number" inputmode="decimal" min="0" max="99" step="1" value="76" required>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="grid-column: 1 / -1;">
+        <div class="actions">
+          <button id="submitBtn" type="submit" class="primary" aria-busy="false">Tahmin Et</button>
+          <button id="resetBtn" type="button" class="soft">Sıfırla</button>
+        </div>
+        <div id="result" class="result" role="status" aria-live="polite" hidden></div>
+        <div id="error" class="result error" role="alert" aria-live="assertive" hidden></div>
+        <div class="meta">
+          <div>Son istek yükü: <code id="payloadView">{}</code></div>
+          <div>Son tahmin: <code id="predictionView">—</code></div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <script src="/assets/app.js" defer></script>
+  {% raw %}{% endraw %}
+</body>
+  </html>
